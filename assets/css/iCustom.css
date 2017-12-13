@@ -40,6 +40,7 @@
 }
 .modal-message .modal-dialog {
     width: 500px;
+    margin-top: 90px;
 }
 .modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
     background: 0 0;
@@ -141,9 +142,16 @@
     .modal-message .modal-dialog{
         width: 300px;
     }
-
+    #appButton{
+        display: none;
+    }
     .modal-footer .btn{
         font-size: 1rem;
+    }
+
+    #modal-success{
+        display: flex !important;
+        justify-content: center;
     }
 
 }
