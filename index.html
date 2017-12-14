@@ -79,7 +79,7 @@
                             <li><a data-scroll href="#contact">Contact <i class="pe-7s-help1"></i></a><span
                                     class="menu-effect"></span></li>
                             <li><a data-scroll
-                                   href="https://drive.google.com/open?id=1YqKWuPSPycUcPqtAX-KvXcjLAa2FVM0d"
+                                   href="https://drive.google.com/open?id=1fs4KKcsY9-_fCc58WIU9vYVLdE3vsXKr"
                                    target="_blank">Resume <i class="pe-7s-glasses"></i></a><span
                                     class="menu-effect"></span></li>
 
@@ -106,7 +106,7 @@
 
             </div>
             <div class="modal-footer justify-content-center">
-                <a type="button" href="https://drive.google.com/open?id=1YqKWuPSPycUcPqtAX-KvXcjLAa2FVM0d"
+                <a type="button" href="https://drive.google.com/open?id=1fs4KKcsY9-_fCc58WIU9vYVLdE3vsXKr"
                    target="_blank" id="download" class="btn btn-primary-modal waves-effect waves-light">Download <i
                         class="fa fa-download" aria-hidden="true"></i></a>
                 <a type="button" id="cancelModal" class="btn btn-outline-secondary-modal waves-effect">No, thanks</a>
@@ -302,7 +302,7 @@
             </div>
             <div class="checkMyResume">
                 <h3>For more information check my <a
-                        href="https://drive.google.com/open?id=1YqKWuPSPycUcPqtAX-KvXcjLAa2FVM0d" target="_blank">Resume</a>
+                        href="https://drive.google.com/open?id=1fs4KKcsY9-_fCc58WIU9vYVLdE3vsXKr" target="_blank">Resume</a>
                 </h3>
             </div>
         </div>
@@ -365,7 +365,7 @@
 
                 <div class="checkMyResume">
                     <h3>For more information check my <a
-                            href="https://drive.google.com/open?id=1YqKWuPSPycUcPqtAX-KvXcjLAa2FVM0d"
+                            href="https://drive.google.com/open?id=1fs4KKcsY9-_fCc58WIU9vYVLdE3vsXKr"
                             target="_blank">Resume</a></h3>
                 </div>
 
@@ -401,19 +401,20 @@
                 </div>
                 <div class="col-sm-6">
                     <h2 class="con-title">Drop me a line</h2>
-                    <form role="form">
+                    <form id="formContact" role="form" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="user_name" placeholder="Enter your name">
+                            <input type="text" class="form-control" id="user_name" name="name" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="your_email" placeholder="Enter your email">
+                            <input type="email" class="form-control" id="your_email" name="email" placeholder="Enter your email" required>
                         </div>
+                        <input type="hidden" class="form-control" id="my_email" name="to" value="imbernal9203@gmail.com">
                         <div class="form-group">
-                            <textarea name="InputMessage" id="user_message" class="form-control" rows="5"
+                            <textarea name="message" id="user_message" class="form-control" rows="5"
                                       required></textarea>
                         </div>
 
-                        <button type="submit" class="btn medium">Let me know</button>
+                        <button type="submit" id="buttonContact" class="btn medium">Let me know</button>
                     </form>
                 </div>
             </div>
@@ -550,7 +551,32 @@
 
         $(".worksExtra").fadeToggle("hiddenWorks")
 
-    })
+    });
+
+    $("#formContact").submit(function(event){
+        event.preventDefault();
+        var data = $("#formContact").serialize();
+
+
+        $.ajax({
+            method: "POST",
+            url: "http://hotlets.com/emails.php",
+            data: data,
+            success: function(result){
+                console.log(data);
+                console.log(result);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+
+                console.log( errorThrown );
+            }
+
+        })
+
+    });
+
+
+
 
 </script>
 
