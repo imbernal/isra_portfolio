@@ -526,7 +526,8 @@
 
         });
 
-        $(".works .item-space").click(function () {
+        $(".works .item-space").on("click" , function () {
+
             var hrefProject = $(this).data("work");
 
             if (hrefProject === "app") {
@@ -535,7 +536,10 @@
             } else {
                 window.open(hrefProject, "_blank")
             }
+
         });
+
+
 
 
     });
